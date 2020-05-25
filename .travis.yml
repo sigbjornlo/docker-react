@@ -1,0 +1,11 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - cd frontend
+  - docker build -t sigbjornlo/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true sigbjornlo/docker-react npm run test
