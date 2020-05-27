@@ -1,4 +1,4 @@
-FROM node:alpine AS build
+FROM node:alpine
 
 WORKDIR /app
 COPY package.json package-lock.json ./
@@ -9,5 +9,5 @@ RUN npm run build
 
 FROM nginx AS production
 
-git EXPOSE 80
-COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 80
+COPY --from=0 /app/build /usr/share/nginx/html
