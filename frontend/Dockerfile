@@ -9,4 +9,5 @@ RUN npm run build
 
 FROM nginx AS production
 
+git EXPOSE 80
 COPY --from=build /app/build /usr/share/nginx/html
